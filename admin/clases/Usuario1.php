@@ -21,8 +21,7 @@ class Usuario{
             $id = $datos[0];
 			$nombre = $c->test_input($datos[1]);
             $apellido = $c->test_input($datos[2]);
-            $clave= $c->test_input($datos[3]);
-            /*$clave= (md5($clave))*/
+            $clave= $c->test_input(md5($datos[3]));
             $tipo = $c->test_input($datos[4]);
             $estado = $c->test_input($datos[5]);
             $correo = $c->test_input($datos[6]);

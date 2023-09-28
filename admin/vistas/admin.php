@@ -31,7 +31,7 @@ if(isset($_SESSION['usuario']))
             <label>Apellido (*)</label>
             <input type="text" class="form-control" id="txtapellido" name="txtapellido">
             <label>clave (*)</label>
-            <input type="text" class="form-control" id="txtclave" name="txtclave">
+            <input type="password" class="form-control" id="txtclave" name="txtclave">
             <label>tipo (*)</label>
             <input type="text" class="form-control" id="txttipo" name="txttipo">
             <label>estado (*)</label>
@@ -75,7 +75,7 @@ if(isset($_SESSION['usuario']))
             <label>Apellido (*)</label>
             <input type="text" class="form-control" id="txtapellidoe" name="txtapellidoe">
             <label>clave (*)</label>
-            <input type="text" class="form-control" id="txtclavee" name="txtclavee">
+            <input type="password" class="form-control" id="txtclavee" name="txtclavee">
             <label>tipo (*)</label>
             <input type="text" class="form-control" id="txttipoe" name="txttipoe">
             <label>estado (*)</label>
@@ -205,7 +205,12 @@ $(document).ready(function(){
             },
             {
                 
-                "data":"clave"
+                "data":"clave",
+                "render": function (data) {
+                // Muestra ***** en lugar de la contraseña real
+                return '*****';
+            }
+                  
             },
             {
                 
