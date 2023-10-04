@@ -1,5 +1,5 @@
 <?php
-    require "../../clases/Usuario1.php";
+    require "../../clases/Clientes.php";
     require "../../clases/Conexion.php";
     $obj = new Usuario();
     $result = $obj->mostrar();

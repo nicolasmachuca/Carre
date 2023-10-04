@@ -17,27 +17,33 @@ if(isset($_SESSION['usuario']))
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar usuairo Admin</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Cliente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       <form id="frmusuario">
+       <form id="frmcliente">
         <div class="row">
            
             <label>Nombre (*)</label>
             <input type="text" class="form-control" id="txtnombre" name="txtnombre">
             <label>Apellido (*)</label>
             <input type="text" class="form-control" id="txtapellido" name="txtapellido">
-            <label>clave (*)</label>
-            <input type="password" class="form-control" id="txtclave" name="txtclave">
-            <label>tipo (*)</label>
-            <input type="text" class="form-control" id="txttipo" name="txttipo">
-            <label>estado (*)</label>
-            <input type="number" class="form-control" id="txtestado" name="txtestado">
             <label>correo (*)</label>
             <input type="email" class="form-control" id="txtcorreo" name="txtcorreo">
+            <label>telefono (*)</label>
+            <input type="text" class="form-control" id="txttelefono" name="txttelefono">
+            <label>direccion (*)</label>
+            <input type="text" class="form-control" id="txtdireccion" name="txtdireccion">
+            <label>localidad (*)</label>
+            <input type="text" class="form-control" id="txtlocalidad" name="txtlocalidad">
+            <label>estado (*)</label>
+            <input type="number" class="form-control" id="txtestado" name="txtestado">
+            <label>clave (*)</label>
+            <input type="password" class="form-control" id="txtclave" name="txtclave">
+            
+            
 
            
             </form>
@@ -61,27 +67,31 @@ if(isset($_SESSION['usuario']))
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar usuario Admin</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 <div class="modal-body">
-       <form id="frmusuarioe">
+       <form id="frmclientee">
         <div class="row">
            
             <label>Nombre (*)</label>
-            <input type="text" class="form-control" id="txtnombree" name="txtnombree">
+            <input type="text" class="form-control" id="txtnombree" name="txtnombre">
             <label>Apellido (*)</label>
-            <input type="text" class="form-control" id="txtapellidoe" name="txtapellidoe">
-            <label>clave (*)</label>
-            <input type="password" class="form-control" id="txtclavee" name="txtclavee">
-            <label>tipo (*)</label>
-            <input type="text" class="form-control" id="txttipoe" name="txttipoe">
-            <label>estado (*)</label>
-            <input type="number" class="form-control" id="txtestadoe" name="txtestadoe">
+            <input type="text" class="form-control" id="txtapellidoe" name="txtapellido">
             <label>correo (*)</label>
-            <input type="email" class="form-control" id="txtcorreoe" name="txtcorreoe">
+            <input type="email" class="form-control" id="txtcorreoe" name="txtcorreo">
+            <label>telefono (*)</label>
+            <input type="text" class="form-control" id="txttelefonoe" name="txttelefono">
+            <label>direccion (*)</label>
+            <input type="text" class="form-control" id="txtdireccione" name="txtdireccion">
+            <label>localidad (*)</label>
+            <input type="text" class="form-control" id="txtlocalidade" name="txtlocalidad">
+            <label>estado (*)</label>
+            <input type="number" class="form-control" id="txtestadoe" name="txtestado">
+            <label>clave (*)</label>
+            <input type="password" class="form-control" id="txtclavee" name="txtclave">
 
             
             </form>
@@ -107,7 +117,7 @@ if(isset($_SESSION['usuario']))
                     <div class="row">
                                 <div class="col-xl-12">
                                         <div class="breadcrumb-holder">
-                                                <h1 class="main-title float-left">Usuario Admin</h1>
+                                                <h1 class="main-title float-left">Cliente</h1>
                                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                                  Registrar
                                                 </button>
@@ -129,13 +139,15 @@ if(isset($_SESSION['usuario']))
                                     <td>#</td>
                                     <td>Nombre</td>
                                     <td>Apellido</td>
-                                    <td>Clave</td>
-                                    <td>Tipo</td>
-                                    <td>Estado</td>
                                     <td>Correo</td>
+                                    <td>Telefono</td>
+                                    <td>Direccion</td>
+                                    <td>Localidad</td>
+                                    <td>Estado</td>
+                                    <td>Clave</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                
                                 </tr>
                             </thead>
                             <tbody>
@@ -186,7 +198,7 @@ $(document).ready(function(){
     
     var table = $('#myTable').DataTable({
         "ajax":{
-            "url":"../procesos/usuarios/mostrar.php",
+            "url":"../procesos/clientes/mostrar.php",
             "type":"GET"
             //"crossDomain": "true",
             //"dataType": "json",
@@ -194,7 +206,7 @@ $(document).ready(function(){
         },
         "columns":[
             {
-                "data":"id_usuario"
+                "data":"id_cliente"
             },
             {
                 "data":"nombre"
@@ -205,16 +217,18 @@ $(document).ready(function(){
             },
             {
                 
-                "data":"clave",
-                "render": function (data) {
-                // Muestra ***** en lugar de la contraseña real
-                return '*****';
-            }
-                  
+                "data":"correo"
+            },
+            {
+                "data":"telefono"
             },
             {
                 
-                "data":"tipo"
+                "data":"direccion"
+            },
+           {
+                
+                "data":"localidad"
             },
             {
                 
@@ -222,11 +236,16 @@ $(document).ready(function(){
             },
             {
                 
-                "data":"correo"
+                "data":"clave",
+                "render": function (data) {
+                // Muestra ***** en lugar de la contraseña real
+                return '*****';
+                 }
+                  
             },
             {
                 sTitle: "Eliminar",
-                mDataProp: "id_usuario",
+                mDataProp: "id_cliente",
                 sWidth: '7%',
                 orderable: false,
                 render: function(data) {
@@ -238,7 +257,7 @@ $(document).ready(function(){
             },
             {
                 sTitle: "Editar",
-                mDataProp: "id_usuario",
+                mDataProp: "id_cliente",
                 sWidth: '7%',
                 orderable: false,
                 render: function(data) {
@@ -275,47 +294,52 @@ $(document).on('click', '.accionesTabla', function() {
         case "Traer":
                     $.ajax({
                         method : "GET",
-                        url : "../procesos/usuarios/traer.php",
-                        data:'id_usuario='+id
+                        url : "../procesos/clientes/traer.php",
+                        data:'id_cliente='+id
                     }).done(function(msg) {
                         var dato=JSON.parse(msg);
                         
 				        $('#txtnombree').val(dato['nombre']);
                         $('#txtapellidoe').val(dato['apellido']);
-                        $('#txtclavee').val(dato['clave']);
-                        $('#txttipoe').val(dato['tipo']);
-                        $('#txtestadoe').val(dato['estado']);
                         $('#txtcorreoe').val(dato['correo']);
+                        $('#txttelefonoe').val(dato['telefono']);
+                        $('#txtdireccione').val(dato['direccion']);
+                        $('#txtlocalidade').val(dato['localidad']);
+                        $('#txtestadoe').val(dato['estado']);
+                        $('#txtclavee').val(dato['clave']);
                         
                         
                         
                         $('#btneditar').unbind().click(function(){
-                            vacios = validarFormVacio('frmusuarioe');
+                            vacios = validarFormVacio('frmclientee');
                             
                             
                             if(vacios <= 0)
                                 {
                             nom = $("#txtnombree").val();
                             ape = $("#txtapellidoe").val();
-                            cla = $("#txtclavee").val();
-                            tip = $("#txttipoe").val();
-                            est = $("#txtestadoe").val();
                             corr = $("#txtcorreoe").val();
+                            tel = $("#txttelefonoe").val();
+                            dir = $("#txtdireccione").val();
+                            loc = $("#txtlocalidade").val();
+                            est = $("#txtestadoe").val();
+                            cla = $("#txtclavee").val();
                              oka = {
-						                "txtnombree" : nom , "id_usuario" : id,
-                                        "txtapellidoe" : ape, "txtclavee" : cla,
-                                        "txttipoe" : tip, "txtestadoe" : est,
-                                        "txtcorreoe" : corr,
+                                        "id_cliente" : id,"txtnombree" : nom , 
+                                        "txtapellidoe" : ape, "txtcorreoe" : corr,
+                                        "txttelefonoe" : tel, "txtdireccione" : dir,
+                                        "txtlocalidade" : loc,"txtestadoe" : est,
+                                        "txtclavee" : cla,
                                 };
                             //alert(oka);
                             //alert(JSON.stringify(oka));
                             $.ajax({
                                 method : "POST",
                                 //contentType: 'application/json; charset=utf-8',
-                                url : "../procesos/usuarios/editar.php",
+                                url : "../procesos/clientes/editar.php",
                                 data : oka
                                 }).done(function(msg) {
-                                alertify.success("Usuario Editado Correctamente!");
+                                alertify.success("Cliente Editado Correctamente!");
                                 table.ajax.reload();
                                 });                               
                                     
@@ -329,14 +353,14 @@ $(document).on('click', '.accionesTabla', function() {
             break;
         case "Eliminar":
             
-            alertify.confirm('Usuario', '¿Esta seguro que desea eliminar este Usuario?', function()
+            alertify.confirm('Cliente', '¿Esta seguro que desea eliminar este Cliente?', function()
                 {
                         $.ajax({
                                 type:"POST",
-                                url : "../procesos/usuarios/eliminar.php",
+                                url : "../procesos/Clientes/eliminar.php",
                                 data : "id="+id
                             }).done(function(msg) {
-                                alertify.success("Usuario Eliminado Correctamente");
+                                alertify.success("Cliente Eliminado Correctamente");
                                 table.ajax.reload();
                             });
                 }
@@ -357,7 +381,7 @@ $(document).on('click', '.accionesTabla', function() {
                                 {
                             noma = $("#txtstocka").val();
                              oka = {
-						                "txtstock" : noma , "id_usuario" : id
+						                "txtstock" : noma , "id_cliente" : id
                                 };
                             //alert(oka);
                             //alert(JSON.stringify(oka));
@@ -398,20 +422,20 @@ $(document).on('click', '.accionesTabla', function() {
     
     
     $('#btnregistrar').click(function(){
-        vacios = validarFormVacio('frmusuario');
+        vacios = validarFormVacio('frmcliente');
         if(vacios <= 0 )
             {
-            datos=$('#frmusuario').serialize();
+            datos=$('#frmcliente').serialize();
             $.ajax({
                type:'post',
-                url:'../procesos/usuarios/registrar.php',
+                url:'../procesos/clientes/registrar.php',
                 data:datos,
                 success:function(r)
                 {
                     
                     if(r==1)
                         {
-                            alertify.success("Usuario Registrado Correcamente");
+                            alertify.success("Cliente Registrado Correcamente");
                             table.ajax.reload();
                         }
                     else if(r==0)
