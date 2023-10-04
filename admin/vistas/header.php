@@ -140,8 +140,9 @@ if(isset($_SESSION['usuario']))
                     <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> Usuarios </span> <span class="menu-arrow"></span></a>
 							<ul class="list-unstyled">
+                            <!--link a administradores-->
 								<li><a href="admin.php"> Admin </a></li>
-							<!--<li><a href="proveedores.php"> Proveedores </a></li>-->
+							<!--link a clientes-->
 								<li><a href="clientes.php"> Clientes </a></li>
 							</ul>
                     </li>
@@ -149,8 +150,9 @@ if(isset($_SESSION['usuario']))
 					<li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> Inventario </span> <span class="menu-arrow"></span></a>
 							<ul class="list-unstyled">
+                            <!--link a productos-->
 								<li><a href="productos.php"> Productos </a></li>
-							<!--<li><a href="proveedores.php"> Proveedores </a></li>-->
+							<!--link a categorias-->
 								<li><a href="categorias.php"> Categorias </a></li>
 							</ul>
                     </li>

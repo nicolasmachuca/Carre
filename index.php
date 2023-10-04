@@ -173,7 +173,7 @@
                                 </div>
                                 <!--cargar producto-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar" data-id="<?php echo $data['id']; ?>" href="#">Agregar<i class="fa fa-shopping-cart"></i></a></div>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar" data-id="<?php echo $data['id_producto']; ?>" href="#">Agregar<i class="fa fa-shopping-cart"></i></a></div>
 
                                 </div>
                             </div>
