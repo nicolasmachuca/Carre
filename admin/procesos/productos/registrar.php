@@ -2,7 +2,7 @@
 require_once '../../clases/Producto.php';
 require_once '../../clases/Conexion.php';
 $nombre = $_POST['txtnombre'];
-$descripcion = $_POST['txtdescripcion']
+$descripcion = $_POST['txtdescripcion'];
 $txtprecioc = $_POST['txtprecioc'];
 $txtpreciov = $_POST['txtpreciov'];
 $txtstock = $_POST['txtstock'];
