@@ -29,7 +29,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center"><strong>Software Venta</strong></h5>
-            <form class="form-signin" id="frmlogin">
+            <form class="form-signin" id="frmlogin" method="POST">
               <div class="form-label-group">
                 <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputEmail">Usuario</label>
@@ -41,7 +41,7 @@
               </div>
 
               
-              <span class="btn btn-lg btn-success btn-block text-uppercase" id="btningresar" type="submit">Ingresar</span><br>
+              <button class="btn btn-lg btn-success btn-block text-uppercase" id="btningresar" type="submit">Ingresar</button><br>
               <div class="custom-control custom-checkbox mb-3">
                
               </div>
@@ -58,17 +58,20 @@
 <script>
     
     $(document).ready(function(){
-        $('#btningresar').click(function(){
+        $('#btningresar').click(function(e){
             datos = $('#frmlogin').serialize();
             var usu = $('#inputEmail').val();
             var cla = $('#inputPassword').val();
-            
+
             if(usu.length == 0 || cla.length ==0)
                 {
                     alertify.error("Complete los campos");
                 }
             else
             {
+              // Evita que se envíe el form
+              e.preventDefault();
+
             $.ajax(
                 {
                type:"POST",

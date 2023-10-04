@@ -342,9 +342,7 @@ $(document).on('click', '.accionesTabla', function() {
                         $('#txtpreciove').val(dato['precio_rebajado']);
                         $('#txtstocke').val(dato['stock']);
                         $('#txtimagene').val(dato['imagen']);
-                        $('#txtcategoriae').val(dato['id_categoria']);
-                        
-                        
+                        $('#txtcategoriae').val(dato['id_categoria']).trigger('change');                        
                         
                         $('#btneditar').unbind().click(function(){
                             vacios = validarFormVacio('frmproductoe');
