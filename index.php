@@ -74,7 +74,7 @@
                             <a href="#" class="nav-link" category="<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
                         <?php } ?>
                     </ul>
-                       
+                  
                 </div>
             </div>
         <!-- </nav>   fin despleglabe -->
@@ -90,8 +90,14 @@
                      <span class="h6 text-uppercase text-dark px-2 ">Accede</span></a>
             </div>
              
-<!-- fin botones de ingreso -->   
-             
+<!-- fin botones de ingreso --> 
+
+<!-- referencia carrito -->  
+</br>
+<a href="carrito.php">
+ <i class="fas fa-shopping-cart text-primary"></i><span class="badge  border border-secondary " style="padding-bottom: 5px;">0</span></a> 
+<!-- fin referencia carrito -->
+ 
 <!-- inicio de ingreso --> 
 <!--  <div class="col-lg-2">
 			<div class="inline-block col-lg-4">
@@ -136,8 +142,9 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                 <!--levanta info de productos para armar catalogo-->  
-                <?php
+    
+           <!--levanta info de productos para armar catalogo-->  
+                        <?php
                 $query = mysqli_query($conexion, "SELECT p.*, c.id AS id_cat, c.categoria FROM productos p INNER JOIN categorias c ON c.id = p.id_categoria");
                 $result = mysqli_num_rows($query);
                 if ($result > 0) {
@@ -173,13 +180,47 @@
                                 </div>
                                 <!--cargar producto-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar" data-id="<?php echo $data['id_producto']; ?>" href="#">Agregar<i class="fa fa-shopping-cart"></i></a></div>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar " data-id="<?php echo $data['id_producto']; ?>" href="#">Agregar<i class="fa fa-shopping-cart"></i></a></div>
 
                                 </div>
                             </div>
                         </div>
-                <?php  }
-                } ?>
+
+                        
+                <?php  } 
+               
+                }
+                ?>
+                
+                <script>
+                // Agregamos funcionalidad al botón "Agregar al carrito"
+                var botonesAgregarAlCarrito = document.getElementsByClassName('agregar-carrito');
+                for (var i = 0; i < botonesAgregarAlCarrito.length; i++) {
+                    var button = botonesAgregarAlCarrito[i];
+                    button.addEventListener('click', agregarAlCarritoClicked);
+                
+                }
+            
+                function agregarAlCarritoClicked(event) {
+                    var button = event.target;
+                    var item = button.parentElement.parentElement;
+                    var titulo = item.querySelector('.h6').innerText;
+                    var precio = item.querySelector('h5').innerText;
+                    var imagenSrc = item.querySelector('img').src;
+            
+                    agregarItemAlCarrito(titulo, precio, imagenSrc);
+                    hacerVisibleCarrito();
+                }
+            
+                function agregarItemAlCarrito(titulo, precio, imagenSrc) {
+                console.log("Item agregado al carrito:", titulo, precio, imagenSrc);
+                }
+                hacerVisibleCarrito();
+                
+                 </script>
+             <!-- carrito -->
+
+
 
             </div>
         </div>
