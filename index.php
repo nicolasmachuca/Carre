@@ -180,45 +180,46 @@
                                 </div>
                                 <!--cargar producto-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar " data-id="<?php echo $data['id_producto']; ?>" href="#">Agregar<i class="fa fa-shopping-cart"></i></a></div>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar-carrito " data-id="<?php echo $data['id_producto']; ?>" href="#">Agregar<i class="fa fa-shopping-cart"></i></a></div>
 
                                 </div>
                             </div>
                         </div>
 
                         
-                <?php  } 
-               
-                }
-                ?>
-                
-                <script>
-                // Agregamos funcionalidad al botón "Agregar al carrito"
-                var botonesAgregarAlCarrito = document.getElementsByClassName('agregar-carrito');
-                for (var i = 0; i < botonesAgregarAlCarrito.length; i++) {
-                    var button = botonesAgregarAlCarrito[i];
-                    button.addEventListener('click', agregarAlCarritoClicked);
-                
-                }
-            
-                function agregarAlCarritoClicked(event) {
-                    var button = event.target;
-                    var item = button.parentElement.parentElement;
-                    var titulo = item.querySelector('.h6').innerText;
-                    var precio = item.querySelector('h5').innerText;
-                    var imagenSrc = item.querySelector('img').src;
-            
-                    agregarItemAlCarrito(titulo, precio, imagenSrc);
-                    hacerVisibleCarrito();
-                }
-            
-                function agregarItemAlCarrito(titulo, precio, imagenSrc) {
-                console.log("Item agregado al carrito:", titulo, precio, imagenSrc);
-                }
-                hacerVisibleCarrito();
-                
-                 </script>
-             <!-- carrito -->
+    <?php  } 
+
+    }
+    ?>
+
+    <script>
+    // Agregamos funcionalidad al botón "Agregar al carrito"
+    var botonesAgregarAlCarrito = document.getElementsByClassName('agregar-carrito');
+    for (var i = 0; i < botonesAgregarAlCarrito.length; i++) {
+    var button = botonesAgregarAlCarrito[i];
+    button.addEventListener('click', agregarAlCarritoClicked);
+
+    }
+
+    function agregarAlCarritoClicked(event) {
+    var button = event.target;
+    var item = button.parentElement.parentElement;
+    var nombre = item.querySelector('.h6').innerText;
+    var precio_rebajado = item.querySelector('h5').innerText;
+    var imagenSrc = item.querySelector('img').src;
+
+    agregarItemAlCarrito(nombre, precio_rebajado, imagenSrc);
+    hacerVisibleCarrito();
+    }
+
+    function agregarItemAlCarrito(nombre, precio_rebajado, imagenSrc) {
+    console.log("Item agregado al carrito:",nombre, precio_rebajado, imagenSrc);
+    }
+    hacerVisibleCarrito();
+
+    </script>
+
+    <!--fin carrito -->
 
 
 
